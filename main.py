@@ -11,8 +11,8 @@ with open(input_file, 'rb',) as file_input:
     with open(watermark_file, 'rb') as file_watermark:
         watermark = PyPDF2.PdfReader(file_watermark)
 
-        first_page = pdf.getPage(0)
-        first_page_watermark = watermark.getPage(0)
+        first_page = pdf.pages[0]
+        first_page_watermark = watermark.pages[0]
 
         first_page.mergePage(first_page_watermark)
 
