@@ -7,11 +7,11 @@ watermark_file = 'logo.pdf'
 
 with open(input_file, "rb") as filehandle_input:
     # читать содержимое исходного файла
-    pdf = PyPDF2.PdfFileReader(filehandle_input)
+    pdf = PyPDF2.PdfReader(filehandle_input)
 
     with open(watermark_file, "rb") as filehandle_watermark:
         # читать содержание водяного знака
-        watermark = PyPDF2.PdfFileReader(filehandle_watermark)
+        watermark = PyPDF2.PdfReader(filehandle_watermark)
 
         # получить первую страницу оригинального PDF
         first_page = pdf.getPage(0)
@@ -23,7 +23,7 @@ with open(input_file, "rb") as filehandle_input:
         first_page.mergePage(first_page_watermark)
 
         # создать объект записи PDF для выходного файла
-        pdf_writer = PyPDF2.PdfFileWriter()
+        pdf_writer = PyPDF2.PdfWriter()
 
         # добавить страницу
         pdf_writer.addPage(first_page)
